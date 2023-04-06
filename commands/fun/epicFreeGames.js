@@ -12,7 +12,7 @@ module.exports = {
             {
                 let gamesList = processAPI(data);
                 let replySendable = "";
-                gamesList.forEach(game => replySendable += game.title);
+                gamesList.forEach(game => replySendable += game.title + "\n");
                 interaction.reply(replySendable)
             })
             .catch(err => console.error(err));
