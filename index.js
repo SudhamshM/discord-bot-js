@@ -15,7 +15,7 @@ const commandFolders = fs.readdirSync(foldersPath);
 
 const thanksList = ["thanks", "thank you",  "thank you very much",  
 "many thanks",  "thanks!",  "appreciate it", 
-"i appreciate it",  "tq",  "thanx",  "thx"];
+"i appreciate it",  "tq",  "thanx",  "thx", "tx", "prece", "preace"];
 
 for (const folder of commandFolders) {
 	const commandsPath = path.join(foldersPath, folder);
@@ -43,9 +43,14 @@ client.on('messageCreate', (msg) =>
 	if (msg.author.bot)
 		return;
 	// checking a bunch of thanks messages to show venom thank you 
+	console.log(msg.content + " by " + msg.author.username)
 	if (thanksList.some(check => msg.content.toLowerCase().includes(check)))
 	{
 		msg.reply('https://tenor.com/view/venom-welcome-copy-mask-copy-youre-welcome-gif-27080978')
+	}
+	if (msg.content.toLowerCase().includes('amirite') && msg.mentions.users)
+	{
+		msg.reply(`isHeRite ${msg.mentions.users.first()}`)
 	}
 })
 
