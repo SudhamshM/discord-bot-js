@@ -39,7 +39,7 @@ client.once(Events.ClientReady, c => {
 	console.log(`Ready! Logged in as ${c.user.tag}`);
 });
 
-client.on('messageCreate', (msg) =>
+client.on(Events.MessageCreate, (msg) =>
 {
 	if (msg.author.bot)
 		return;
