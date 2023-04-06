@@ -1,8 +1,9 @@
 // Require the necessary discord.js classes
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, IntentsBitField } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
+const http = require('http');
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds, 
@@ -81,4 +82,11 @@ client.on(Events.InteractionCreate, async interaction =>
 
 // Log in to Discord with your client's token
 client.login(token);
+
+http.createServer((req, res) =>
+{
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.write('ok');
+	res.end();
+}).listen(10000)
 
