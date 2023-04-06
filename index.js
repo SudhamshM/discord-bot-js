@@ -50,7 +50,9 @@ client.on('messageCreate', (msg) =>
 	}
 	if (msg.content.toLowerCase().includes('amirite') && msg.mentions.users)
 	{
-		msg.reply(`isHeRite ${msg.mentions.users.first()}`)
+		const rightMessage = ['isHeRite', 'isheRight'];
+		const index = Math.floor(Math.random() * 2);
+		msg.reply(`${rightMessage[index]} ${msg.mentions.users.first()}`)
 	}
 })
 
