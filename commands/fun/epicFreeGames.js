@@ -13,11 +13,9 @@ module.exports = {
                 let gamesList = processAPI(data);
                 let replySendable = "";
                 gamesList.forEach(game => replySendable += game.title);
-                interaction.reply(replySendable).then(() => console.log("sent games")).catch(err => console.log(err));
+                interaction.reply(replySendable)
             })
             .catch(err => console.error(err));
-
-            console.log(apiResp)
         }
 
 
