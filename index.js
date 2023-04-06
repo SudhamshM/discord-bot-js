@@ -67,9 +67,6 @@ client.on(Events.InteractionCreate, async interaction =>
 
 		try {
 			await command.execute(interaction);
-			const channelID = '1068617453988495393';
-			const channel = client.channels.cache.get(channelID);
-			channel.send('Test');
 		} catch (error) {
 			console.error(error);
 			if (interaction.replied || interaction.deferred) {
