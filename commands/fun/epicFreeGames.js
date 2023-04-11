@@ -11,7 +11,7 @@ module.exports = {
             .then((data) => 
             {
                 let gamesList = processAPI(data);
-                let replySendable = "";
+                let replySendable = "**This week's Free Games!** :video_game: \n\n ";
                 gamesList.forEach(game => replySendable += game.title + "\n");
                 interaction.reply(replySendable)
             })
@@ -27,7 +27,9 @@ function processAPI(apiResponse)
     apiResponse.data.Catalog.searchStore.elements.forEach(element => {
         if (element.offerType === 'BASE_GAME')
         {
-            gamesList.push(element);
+            if (element.promotions.promotionalOffers.length > 0)
+                if (new Date().getTime() <= new Date(element.promotions.promotionalOffers[0].promotionalOffers[0].endDate).getTime())
+                    gamesList.push(element);
         }
     });
     return gamesList;
