@@ -28,7 +28,9 @@ function processAPI(apiResponse)
         if (element.offerType === 'BASE_GAME')
         {
             if (element.promotions.promotionalOffers.length > 0)
-                if (new Date().getTime() <= new Date(element.promotions.promotionalOffers[0].promotionalOffers[0].endDate).getTime())
+            // checking start and end time and comparing to current time 
+                if ((new Date().getTime() <= new Date(element.promotions.promotionalOffers[0].promotionalOffers[0].endDate).getTime()) 
+                && (new Date(element.promotions.promotionalOffers[0].promotionalOffers[0].startDate).getTime() <= new Date().getTime()))
                     gamesList.push(element);
         }
     });
